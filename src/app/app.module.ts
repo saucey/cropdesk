@@ -12,7 +12,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { HttpClientModule } from '@angular/common/http';
-
+import { MatGridListModule } from '@angular/material/grid-list';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,8 @@ import { HttpClientModule } from '@angular/common/http';
     MatButtonModule,
     MatProgressSpinnerModule,
     HttpClientModule,
+    MatGridListModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

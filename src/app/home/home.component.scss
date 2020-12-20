@@ -1,0 +1,27 @@
+ngb-rating {
+  color: gold;
+}
+
+mat-card {
+  background: #cbcbcb;
+  height: 350px;
+  margin-bottom: 20px;
+}
+
+.header {
+  &__released {
+    font-size: 1em;
+    font-weight: bold;
+    span {
+      font-weight: 100;
+      color: #ff000069;
+    }
+  }
+  &__name {
+    color: #7b1fa2;
+  }
+}
+
+mat-card-actions {
+  margin-left: 0;
+}
