@@ -8,15 +8,16 @@ import { DataService } from '../data.service';
 })
 export class HomeComponent implements OnInit {
 
-  products = [];
+  games = [];
 
   constructor(private dataService: DataService) { }
 
   ngOnInit() {
 
-    this.dataService.sendGetRequest().subscribe((data: any[])=>{
-      console.log(data);
-      this.products = data;
+    this.dataService.sendGetRequest().subscribe((data: any) => {
+      const games = data.results
+      this.games = games;
+      console.log(this.games, 'the games')
     })  
   }
 
