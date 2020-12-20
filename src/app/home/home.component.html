@@ -1,7 +1,6 @@
 
 <div style="padding: 13px;">
     <mat-spinner *ngIf="games.length === 0"></mat-spinner>
-
     <div class='md-padding' layout="row" flex>
         <div layout="row" style="display: flex; flex-wrap: wrap; justify-content: space-around;">
             <div class="parent" style="width: 240px" layout="column" *ngFor="let game of games" flex>
@@ -23,9 +22,28 @@
                         <div>
                             <ngb-rating class="star-rating-wrapper" [max]="5" [(rate)]="game.rating_top" [readonly]="false"></ngb-rating>
                         </div>
+                        <div class="genreWrapper">
+                            <span class="genreWrapper__title">Genres:</span>
+                            <ul class="genreWrapper__list">
+                                <li *ngFor="let genre of game.genres">{{genre.name}}</li>
+                            </ul>
+                        </div>
+                        <div class="genreWrapper">
+                            <span class="genreWrapper__title">Platforms:</span>
+                            <ul class="genreWrapper__list">
+                                <li *ngFor="let platform of game.parent_platforms">{{platform.platform.name}}</li>
+                            </ul>
+                        </div>
                     </mat-card-actions>
                 </mat-card>
             </div>
         </div>
+    </div>
+    <div class="pagination">
+        <ul>
+            <li (click)="goTo(link.index)" *ngFor="let link of pageLinks">
+                {{link.index}}
+            </li>
+        </ul>
     </div>
 </div>

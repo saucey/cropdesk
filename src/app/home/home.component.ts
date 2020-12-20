@@ -10,27 +10,39 @@ import * as moment from 'moment'
 export class HomeComponent implements OnInit {
 
   games = [];
+  pageLinks = []
 
   constructor(private dataService: DataService) { }
 
   ngOnInit() {
+    this.dataService.getGames().subscribe((data: any) => {
+      this.dataMapping(data)
+      this.createPagination(data.count)
+    })  
+  }
 
-    
-    this.dataService.sendGetRequest().subscribe((data: any) => {
-      
-      data.results.map(val => {
-        val.released = moment(val.released).format('ll');
-        return val;
-      })
-      
-      console.log(data, 'reponse after')
+  public createPagination(count) {
+    let pageLength = count / 20
+    Number.isInteger(pageLength) ? pageLength : pageLength++;
+    pageLength = Math.trunc(pageLength)
+    for (var i = 1; i < pageLength; i++) {
+      this.pageLinks.push({index: i})
+    }
+  }
 
+  public dataMapping(data) {
+    console.log(data, 'dats')
+    data.results.map(val => {
+      val.released = moment(val.released).format('ll');
+      return val;
+    })
+    const games = data.results
+    this.games = games;
+  }
 
-      // myDate = moment(someDate).format('MM/DD/YYYY HH:mm');
-
-      const games = data.results
-      this.games = games;
-      console.log(this.games, 'the games')
+  public goTo(pageIndex) {
+      this.dataService.getGames(pageIndex).subscribe((data: any) => {
+        this.dataMapping(data)
     })  
   }
 

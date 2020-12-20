@@ -4,7 +4,7 @@ ngb-rating {
 
 mat-card {
   background: #cbcbcb;
-  height: 350px;
+  //   height: 350px;
   margin-bottom: 20px;
 }
 
@@ -24,4 +24,43 @@ mat-card {
 
 mat-card-actions {
   margin-left: 0;
+}
+
+mat-card-content {
+  margin: 0;
+}
+
+.genreWrapper {
+  &__title {
+    margin: 10px 0 2px 0;
+    display: inline-block;
+  }
+  &__list {
+    margin: 0;
+    padding: 0;
+    li {
+      list-style-type: none;
+      display: inline-block;
+      background: #7b1fa2;
+      margin-right: 5px;
+      padding: 2px 5px;
+      border-radius: 2px;
+      margin-bottom: 5px;
+    }
+  }
+}
+
+.pagination {
+  ul {
+    li {
+      cursor: pointer;
+      display: inline-block;
+      color: #7b1fa2;
+      font-size: 2em;
+      margin-right: 4px;
+      padding: 20px;
+      border: 1px solid #7b1fa2;
+      list-style-type: none;
+    }
+  }
 }
