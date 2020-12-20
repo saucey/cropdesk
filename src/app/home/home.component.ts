@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
 import * as moment from 'moment'
-
+import {GamesModel} from './games.interface'
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -15,7 +15,7 @@ export class HomeComponent implements OnInit {
   constructor(private dataService: DataService) { }
 
   ngOnInit() {
-    this.dataService.getGames().subscribe((data: any) => {
+    this.dataService.getGames().subscribe((data: GamesModel) => {
       this.dataMapping(data)
       this.createPagination(data.count)
     })  
@@ -30,7 +30,7 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  public dataMapping(data) {
+  public dataMapping(data: GamesModel) {
     console.log(data, 'dats')
     data.results.map(val => {
       val.released = moment(val.released).format('ll');
