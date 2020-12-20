@@ -34,7 +34,6 @@ export class HomeComponent implements OnInit {
   }
 
   public dataMapping(data: GamesModel) {
-    console.log(data, 'dats')
     data.results.map(val => {
       val.released = moment(val.released).format('ll');
       return val;
@@ -44,8 +43,6 @@ export class HomeComponent implements OnInit {
   }
 
   public goTo(pageIndex) {
-    console.log(pageIndex, 'clicked on')
-    console.log(this.pageLinks, 'page obj')
       this.dataService.getGames(pageIndex).subscribe((data: any) => {
         this.dataMapping(data)
         this.pageLinks.map((val) => {
