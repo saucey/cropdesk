@@ -41,7 +41,7 @@
     </div>
     <div class="pagination">
         <ul>
-            <li (click)="goTo(link.index)" *ngFor="let link of pageLinks">
+            <li [ngClass]="[link.selected ? 'selected' : '']" (click)="goTo(link.index)" *ngFor="let link of pageLinks">
                 {{link.index}}
             </li>
         </ul>

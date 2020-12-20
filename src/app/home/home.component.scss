@@ -61,6 +61,10 @@ mat-card-content {
       padding: 20px;
       border: 1px solid #7b1fa2;
       list-style-type: none;
+      &.selected {
+        background-color: #7b1fa2;
+        color: white;
+      }
     }
   }
 }

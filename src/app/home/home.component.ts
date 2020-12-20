@@ -26,8 +26,11 @@ export class HomeComponent implements OnInit {
     Number.isInteger(pageLength) ? pageLength : pageLength++;
     pageLength = Math.trunc(pageLength)
     for (var i = 1; i < pageLength; i++) {
-      this.pageLinks.push({index: i})
+      this.pageLinks.push({ index: i })
     }
+    this.pageLinks.map((val, index) => {
+      index === 0 ? val['selected'] = true : val['selected'] = false
+    })
   }
 
   public dataMapping(data: GamesModel) {
@@ -41,9 +44,14 @@ export class HomeComponent implements OnInit {
   }
 
   public goTo(pageIndex) {
+    console.log(pageIndex, 'clicked on')
+    console.log(this.pageLinks, 'page obj')
       this.dataService.getGames(pageIndex).subscribe((data: any) => {
         this.dataMapping(data)
-    })  
+        this.pageLinks.map((val) => {
+          val.index === pageIndex ? val['selected'] = true : val['selected'] = false
+      })
+    }) 
   }
 
 }
